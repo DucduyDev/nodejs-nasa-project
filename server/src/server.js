@@ -16,8 +16,7 @@ const server = http.createServer(app);
 
 async function startServer() {
   await connect();
-  await loadPlanetsData();
-  await loadSpaceXLaunchData();
+  await Promise.all([loadPlanetsData(), loadSpaceXLaunchData()]);
 
   server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`);
