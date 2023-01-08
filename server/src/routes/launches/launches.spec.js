@@ -1,12 +1,14 @@
 const request = require("supertest");
 const app = require("../../app");
 const { connect, disconnect } = require("../../services/mongo");
+const { loadPlanetsData } = require("../../models/planets.model");
 
 // Test fixture
 describe("launches endpoint", () => {
   // callback will run once
   beforeAll(async () => {
     await connect();
+    await loadPlanetsData();
   });
 
   afterAll(async () => {
